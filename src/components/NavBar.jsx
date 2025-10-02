@@ -1,4 +1,6 @@
 import { useState } from "react"
+import BurgerIcon from "./Icons/BurgerIcon.jsx"
+import CloseIcon from "./Icons/CloseIcon.jsx"
 
 const navbarLinks = [
   {id: 1, title: 'Inicio', link: '/'},
@@ -23,23 +25,18 @@ const NavBar = () => {
       >
         {console.log(isOpen)}
 
+        {/* Uso de iconos SVG para abrir y cerrar menú hamburguesa */}
         <svg
           className="w-6 h-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24 "
           >
-          <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M4 6h16M4 12h16M4 18h16" // burger
-          />
-
+          { isOpen ? <CloseIcon /> : <BurgerIcon /> }
         </svg>
       </button>
 
-        <ul className="flex">
+        <ul className="hidden md:flex gap-2">
           { navbarLinks.map((item, index) => (
               <li key={index}>
                 <a href={item.link}
