@@ -1,17 +1,17 @@
 import { useState } from "react"
-import BurgerIcon from "./Icons/BurgerIcon.jsx"
-import CloseIcon from "./Icons/CloseIcon.jsx"
+
 
 const navbarLinks = [
   {id: 1, title: 'Inicio', link: '/'},
-  {id: 2, title: 'Equipos', link: '#equipos'},
-  {id: 3, title: 'Blog', link: '/blog'},
-  {id: 4, title: 'Calendario', link: '#calendario'},
-  {id: 5, title: 'Contacto', link: '/contacto'}
+  {id: 2, title: 'Equipos', link: '/#equipos'},
+  {id: 3, title: 'Blog', link: '/#blog'},
+  {id: 4, title: 'Calendario', link: '/#calendario'},
+  {id: 5, title: 'Contacto', link: '/#contacto'}
 ]
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false)
+
 
   const toggleMenu = () => setIsOpen(!isOpen)
 
@@ -32,10 +32,22 @@ const NavBar = () => {
           stroke="currentColor"
           viewBox="0 0 24 24 "
           >
-          { isOpen ? <CloseIcon /> : <BurgerIcon /> }
+          { isOpen
+            ? <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12" // X
+              />
+            : <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16" // Burger
+              />
+          }
         </svg>
       </button>
-
         <ul className="hidden md:flex gap-2">
           { navbarLinks.map((item, index) => (
               <li key={index}>

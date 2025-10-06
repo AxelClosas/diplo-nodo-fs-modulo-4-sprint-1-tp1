@@ -2,7 +2,7 @@ import NavBar from "./NavBar.jsx"
 
 const Header = () => {
   return (
-    <header className="w-full bg-gradient-to-r from-[#0b3c7f] to-[#1e6fd9] p-4">
+    <header className="w-full bg-transparent p-4 fixed transition duration-200 shadow-black z-50">
       <div className="max-w-7xl flex justify-between mx-auto">
         <div className="flex items-center gap-2">
           <a href="">
@@ -20,3 +20,16 @@ const Header = () => {
 }
 
 export default Header
+
+
+// Animación del header al hacer scroll
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('header')
+  if (window.scrollY > 0) {
+    header.classList.remove('bg-transparent')
+    header.classList.add('bg-gradient-to-r', 'from-[#0b3c7f]', 'to-[#1e6fd9]', 'shadow-[0_0_5px]', 'shadow-black')
+  } else {
+    header.classList.add('bg-transparent')
+    header.classList.remove('bg-gradient-to-r', 'from-[#0b3c7f]', 'to-[#1e6fd9]', 'shadow-[0_0_5px]', 'shadow-black')
+  }
+})
