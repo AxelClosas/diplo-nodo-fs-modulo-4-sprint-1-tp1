@@ -1,4 +1,17 @@
 import TeamCard from "./TeamCard.jsx"
+import { motion } from "motion/react"
+
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,   // ⏱️ demora entre cada card
+      delayChildren: 0.1      // ⏱️ retardo inicial
+    }
+  }
+}
 
 
 export default function Teams() {
@@ -25,9 +38,14 @@ export default function Teams() {
   ]
 
   return (
-    <main className="pt-16 2xl:max-w-6xl 2xl:mx-auto" id="equipos">
+    <main className="pt-16 2xl:max-w-6xl 2xl:mx-auto" id="equipos"
+    >
       <h2 className="text-2xl font-bold mb-4 text-blue-900 text-center after:content-[''] after:block after:w-20 after:h-1 after:bg-red-600 after:mt-4 after:mx-auto">Nuestros Equipos</h2>
-      <div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <motion.div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
         {teams.map((team, index) => (
           <TeamCard
             key={index}
@@ -37,7 +55,7 @@ export default function Teams() {
             link={team.link}
           />
         ))}
-      </div>
+      </motion.div>
     </main>
   )
 }
