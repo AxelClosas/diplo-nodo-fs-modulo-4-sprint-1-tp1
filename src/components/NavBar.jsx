@@ -23,7 +23,6 @@ const NavBar = () => {
           className="md:hidden text-white p-2 cursor-pointer"
           onClick={toggleMenu}
         >
-          {console.log(isOpen)}
 
           {/* Uso de iconos SVG para abrir y cerrar menú hamburguesa */}
           <svg
